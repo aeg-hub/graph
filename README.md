@@ -39,16 +39,16 @@ sie beschreiben Schritt für Schritt, was zu tun ist.
 Implementierung des Interfaces `Graph` mithilfe von verketteten Listen (`List<Vertex>` und
 `List<Edge>`). Die interne Struktur ähnelt der NRW-Originalklasse, die ihr aus dem Unterricht kennt.
 
-### 3. `MatrixGraph.java`
+### 3. `beispiele/DreiKnotenGraph.java`
+Sobald eure erste Implementierung funktioniert, könnt ihr den Beispielgraphen ausführen und prüfen, ob die Ausgabe korrekt ist. Erweitert die Beispiele gerne um eigene Graphen!
+
+### 4. `MatrixGraph.java`
 Implementierung desselben Interfaces mithilfe einer **Adjazenzmatrix** (`Edge[][]`). Hier lohnt
 es sich, nach der Implementierung zu diskutieren:
 - Welche Methoden sind schneller als im `ListGraph`?
 - Wo verbraucht die Matrix unnötig Speicher?
 - Warum wächst das interne Array automatisch – und wie funktioniert das?
 
-### 4. `beispiele/DreiKnotenGraph.java`
-Sobald eure Implementierungen funktionieren, könnt ihr den Beispielgraphen ausführen und prüfen,
-ob die Ausgabe korrekt ist. Erweitert die Beispiele gerne um eigene Graphen!
 
 ---
 
@@ -59,8 +59,8 @@ Um gemeinsam an diesem Projekt zu arbeiten, gelten folgende Regeln:
 ### Branches
 - Der **`main`-Branch** enthält immer einen lauffähigen, gemeinsam abgestimmten Stand.
 - **Arbeitet nie direkt auf `main`.**
-- Jede Person arbeitet auf einem **eigenen Branch**, benannt nach eurem Namen oder dem Feature,
-  z.B. `lisa/listgraph` oder `feature/matrixgraph-remove`.
+- Jede Person arbeitet auf einem **eigenen Branch**, benannt nach eurem Namen und ggf. Ziel
+  z.B. `hans/listgraph` .
 
 Einen neuen Branch erstellen und wechseln:
 ```bash
