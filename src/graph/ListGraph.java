@@ -95,6 +95,10 @@ public class ListGraph implements Graph {
      */
     public void removeVertex(Vertex pVertex) {
 
+        if (pVertex ==null){
+            return;
+        }
+
         edges.toFirst();
         while (edges.hasAccess()){
             // if (edges.getContent().getVertices()[0] == pVertex || edges.getContent().getVertices()[1] == pVertex){
@@ -106,16 +110,18 @@ public class ListGraph implements Graph {
             if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex){
 
                 edges.remove();
+            } else {
+                edges.next();
             }
-            edges.next();
         }
 
         vertices.toFirst();
         while (vertices.hasAccess()){
             if (vertices.getContent() == pVertex){
                 vertices.remove();
-            }
+            } else {
                 vertices.next();
+            }
 
         }
     }
@@ -227,6 +233,20 @@ public class ListGraph implements Graph {
      * Bei Uebereinstimmung remove() aufrufen (kein next() danach!), sonst next().
      */
     public void removeEdge(Edge pEdge) {
+
+        if (pEdge == null) {
+            return;
+        }
+
+        edges.toFirst();
+
+        while (edges.hasAccess()) {
+            if (edges.getContent() == pEdge) {
+                edges.remove(); // KEIN next(), weil remove schon weiterschiebt
+            } else {
+                edges.next();
+            }
+        }
 
     }
 
