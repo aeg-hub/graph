@@ -1,5 +1,7 @@
 package graph;
 
+import java.sql.Array;
+
 /**
  * Klasse Edge
  *
@@ -18,7 +20,11 @@ public class Edge {
      * und pAnotherVertex an Index 1. Setze weight auf pWeight und mark auf false.
      */
     public Edge(Vertex pVertex, Vertex pAnotherVertex, double pWeight) {
-
+        this.vertices = new Vertex[2];
+        this.vertices[0] = pVertex;
+        this.vertices[1] = pAnotherVertex;
+        this.weight = pWeight;
+        this.mark = false;
     }
 
     /**
@@ -28,7 +34,13 @@ public class Edge {
      * ungewollten Veraenderungen von aussen).
      */
     public Vertex[] getVertices() {
-        return null;
+        Vertex[] copyOf = new Vertex[vertices.length];
+
+        for (int i = 0; i < vertices.length; i++) {
+            copyOf[i] = vertices[i];
+        }
+
+        return copyOf;
     }
 
     /**
@@ -36,6 +48,7 @@ public class Edge {
      * Hinweis: Weise pWeight direkt dem Attribut weight zu.
      */
     public void setWeight(double pWeight) {
+        this.weight = pWeight;
 
     }
 
@@ -44,7 +57,7 @@ public class Edge {
      * Hinweis: Gib das Attribut weight zurueck.
      */
     public double getWeight() {
-        return 0;
+        return weight;
     }
 
     /**
@@ -52,7 +65,7 @@ public class Edge {
      * Hinweis: Weise pMark direkt dem Attribut mark zu.
      */
     public void setMark(boolean pMark) {
-
+        mark = pMark;
     }
 
     /**
@@ -60,6 +73,6 @@ public class Edge {
      * Hinweis: Gib das Attribut mark zurueck.
      */
     public boolean isMarked() {
-        return false;
+        return mark;
     }
 }
