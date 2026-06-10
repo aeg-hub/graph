@@ -1,7 +1,5 @@
 package graph;
 
-import java.sql.Array;
-
 /**
  * Klasse Edge
  *
@@ -34,11 +32,10 @@ public class Edge {
      * ungewollten Veraenderungen von aussen).
      */
     public Vertex[] getVertices() {
-        Vertex[] copyOf = new Vertex[vertices.length];
+        Vertex[] copyOf = new Vertex[2];
 
-        for (int i = 0; i < vertices.length; i++) {
-            copyOf[i] = vertices[i];
-        }
+        copyOf[0] = vertices[0];
+        copyOf[1] = vertices[1];
 
         return copyOf;
     }
