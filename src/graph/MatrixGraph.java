@@ -359,6 +359,7 @@ public class MatrixGraph implements Graph {
         for (int i = 0; i < vertexCount; i++) {
             if (!vertices[i].isMarked()) {
                 result = false;
+                break;
             }
         }
 
@@ -377,6 +378,7 @@ public class MatrixGraph implements Graph {
             for (int j = i + 1; j < vertexCount; j++) {
                 if (matrix[i][j] != null && !matrix[i][j].isMarked()) {
                     result = false;
+                    break;
                 }
             }
         }
