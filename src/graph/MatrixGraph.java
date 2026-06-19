@@ -45,26 +45,6 @@ public class MatrixGraph implements Graph {
      */
     private int indexOf(Vertex pVertex) {
 
-        /** Es wäre so viel einfacher eine methode: buildIndex() zu haben,
-         * welche eine neue hashMap der indexe baut und wenn man den index haben will
-         * einfach eine Hilfsmethode für diese zu machen
-         *
-         * private Vertex[] vertices;
-         * private HashMap<Vertex, Integer> vertexIndexMap;
-         *
-         * private void buildIndexMap() {
-         *     vertexIndexMap = new HashMap<>();
-         *     for (int i = 0; i < vertices.length; i++) {
-         *         vertexIndexMap.put(vertices[i], i);
-         *     }
-         * }
-         *
-         * private int indexOf(Vertex pVertex) {
-         *     return vertexIndexMap.getOrDefault(pVertex, -1);
-         * }
-         *
-         * ungefär so
-         */
         for (int i = 0; i < vertices.length; i++){
             if (vertices[i] == pVertex){
                 return i;
