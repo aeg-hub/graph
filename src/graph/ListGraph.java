@@ -31,7 +31,6 @@ public class ListGraph implements Graph {
      * Setze den Zeiger der Ergebnisliste am Ende mit toFirst() auf den Anfang.
      */
     public List<Vertex> getVertices() {
-<<<<<<< HEAD
         vertices.toFirst();
         List<Vertex> copyOf = new List<>();
         while (vertices.hasAccess()) {
@@ -41,16 +40,6 @@ public class ListGraph implements Graph {
 
         copyOf.toFirst();
         return copyOf;
-=======
-        List<Vertex> a = new List<Vertex>();
-        vertices.toFirst();
-        while(vertices.hasAccess()) {
-        	a.append(vertices.getContent());
-        	vertices.next();
-        }
-        a.toFirst();
-    	return a;
->>>>>>> 80f9277 (Amros implementation der Edge, Vertex, ListGraph)
     }
 
     /**
@@ -59,7 +48,6 @@ public class ListGraph implements Graph {
      * Sobald eine Uebereinstimmung gefunden wurde, kann die Schleife abgebrochen werden.
      */
     public Vertex getVertex(String pID) {
-<<<<<<< HEAD
         vertices.toFirst();
         while (vertices.hasAccess()) {
             if (vertices.getContent().getID().equals(pID)) {
@@ -70,16 +58,6 @@ public class ListGraph implements Graph {
             }
         }
         return null;
-=======
-    	vertices.toFirst();
-    	while(vertices.hasAccess()) {
-    		if (vertices.getContent().getID().equals(pID)) {
-    			return vertices.getContent();
-    		}
-    		vertices.next();
-    	}
-    	return null;
->>>>>>> 80f9277 (Amros implementation der Edge, Vertex, ListGraph)
     }
 
     /**
