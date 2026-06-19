@@ -1,15 +1,18 @@
 package beispiele;
 
-import graph.*;
+import graph.Edge;
+import graph.List;
+import graph.ListGraph;
+import graph.Vertex;
 
 /**
  * Erstellt einen vollstaendigen Graphen K3 mit drei Knoten und drei Kanten.
- *
- *   A ---5--- B
- *    \       /
- *     3     7
- *      \   /
- *        C
+ * <p>
+ * A ---5--- B
+ * \       /
+ * 3     7
+ * \   /
+ * C
  */
 public class DreiKnotenGraph {
 

@@ -1,7 +1,8 @@
 package graph;
+
 /**
  * Interface Graph
- *
+ * <p>
  * Beschreibt einen ungerichteten, kantengewichteten Graphen.
  * Moegliche Implementierungen: ListGraph (Adjazenzliste), MatrixGraph (Adjazenzmatrix)
  */
