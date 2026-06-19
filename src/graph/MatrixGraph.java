@@ -422,27 +422,3 @@ public class MatrixGraph implements Graph {
     }
 }
 
-/**
- * Fragen:
- *
- * welche methoden sind schneller als in ListGraph?
- *
- * 1. alle getter - müssen bloß die array auswerten, keine traversierung
- * 2.Nachbarn suche(bei großen datenmengen):
- * ListGraph: muss alle Kanten durchsuchen
- * MatrixGraph: läuft einfach eine Zeile der Matrix durch
- *
- * Wo verbraucht die Maxtrix unnötig speicher?
- *
- * Speicherverbrauch: O(n^2)
- * Auch wenn KEINE Kante existiert -> Platz ist trotzdem reserviert
- * Viele null-Einträge bleiben ungenutzt
- *
- * Warum wächst das interne Array automatisch – und wie funktioniert das?
- *
- * Das passiert über die Methode grow().
- * Arrays in Java sind fixe Größe:
- *
- * Du kannst sie nicht erweitern
- * Wenn sie voll sind -> neuer, größerer Speicher nötig
- */

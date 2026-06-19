@@ -134,7 +134,7 @@ public class ListGraph implements Graph {
      * Liefert eine neue Liste aller Kanten des Graphen (flache Kopie).
      * Hinweis: Analog zu getVertices(), aber fuer edges und Edge-Objekte.
      */
-    public List getEdges() {
+    public List<Edge> getEdges() {
 
         List copyOf = new List<>();
 
