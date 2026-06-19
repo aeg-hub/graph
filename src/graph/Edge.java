@@ -7,7 +7,7 @@ package graph;
  * Eine Kante verbindet genau zwei Knoten und hat eine Gewichtung sowie eine Markierung.
  */
 public class Edge {
-
+	
     private Vertex[] vertices;
     private double weight;
     private boolean mark;
@@ -18,7 +18,11 @@ public class Edge {
      * und pAnotherVertex an Index 1. Setze weight auf pWeight und mark auf false.
      */
     public Edge(Vertex pVertex, Vertex pAnotherVertex, double pWeight) {
-
+    	vertices = new Vertex[2];
+    	vertices[0] = pVertex;
+    	vertices[1] = pAnotherVertex;
+    	this.weight = pWeight;
+    	this.mark = false;
     }
 
     /**
@@ -28,7 +32,8 @@ public class Edge {
      * ungewollten Veraenderungen von aussen).
      */
     public Vertex[] getVertices() {
-        return null;
+        Vertex[] a = vertices;
+    	return a;
     }
 
     /**
@@ -36,7 +41,7 @@ public class Edge {
      * Hinweis: Weise pWeight direkt dem Attribut weight zu.
      */
     public void setWeight(double pWeight) {
-
+    	this.weight = pWeight;
     }
 
     /**
@@ -44,7 +49,7 @@ public class Edge {
      * Hinweis: Gib das Attribut weight zurueck.
      */
     public double getWeight() {
-        return 0;
+        return this.weight;
     }
 
     /**
@@ -52,7 +57,7 @@ public class Edge {
      * Hinweis: Weise pMark direkt dem Attribut mark zu.
      */
     public void setMark(boolean pMark) {
-
+    	this.mark = pMark;
     }
 
     /**
@@ -60,6 +65,6 @@ public class Edge {
      * Hinweis: Gib das Attribut mark zurueck.
      */
     public boolean isMarked() {
-        return false;
+        return mark;
     }
 }

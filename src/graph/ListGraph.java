@@ -29,7 +29,14 @@ public class ListGraph implements Graph {
      * Setze den Zeiger der Ergebnisliste am Ende mit toFirst() auf den Anfang.
      */
     public List<Vertex> getVertices() {
-        return null;
+        List<Vertex> a = new List<Vertex>();
+        vertices.toFirst();
+        while(vertices.hasAccess()) {
+        	a.append(vertices.getContent());
+        	vertices.next();
+        }
+        a.toFirst();
+    	return a;
     }
 
     /**
@@ -38,7 +45,14 @@ public class ListGraph implements Graph {
      * Sobald eine Uebereinstimmung gefunden wurde, kann die Schleife abgebrochen werden.
      */
     public Vertex getVertex(String pID) {
-        return null;
+    	vertices.toFirst();
+    	while(vertices.hasAccess()) {
+    		if (vertices.getContent().getID().equals(pID)) {
+    			return vertices.getContent();
+    		}
+    		vertices.next();
+    	}
+    	return null;
     }
 
     /**

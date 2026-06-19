@@ -16,7 +16,7 @@ public class Vertex {
      * Hinweis: Speichere pID im Attribut id. Setze mark auf false.
      */
     public Vertex(String pID) {
-
+    	this.id = pID;
     }
 
     /**
@@ -25,7 +25,7 @@ public class Vertex {
      * damit das interne Attribut nicht von aussen veraendert werden kann.
      */
     public String getID() {
-        return null;
+        return new String(this.id);
     }
 
     /**
@@ -33,7 +33,7 @@ public class Vertex {
      * Hinweis: Weise pMark direkt dem Attribut mark zu.
      */
     public void setMark(boolean pMark) {
-
+    	this.mark = pMark;
     }
 
     /**
@@ -41,6 +41,6 @@ public class Vertex {
      * Hinweis: Gib das Attribut mark zurueck.
      */
     public boolean isMarked() {
-        return false;
+        return mark;
     }
 }
