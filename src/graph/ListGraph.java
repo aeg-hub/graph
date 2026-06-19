@@ -15,7 +15,8 @@ public class ListGraph implements Graph {
      * Hinweis: Initialisiere beide Listen als neue, leere List-Objekte.
      */
     public ListGraph() {
-
+        vertices = new List<>();
+        edges = new List<>();
     }
 
     // -------------------------------------------------------------------------
@@ -29,7 +30,15 @@ public class ListGraph implements Graph {
      * Setze den Zeiger der Ergebnisliste am Ende mit toFirst() auf den Anfang.
      */
     public List<Vertex> getVertices() {
-        return null;
+        vertices.toFirst();
+        List<Vertex> copyOf = new List<>();
+        while(vertices.hasAccess()){
+            copyOf.append(vertices.getContent());
+            vertices.next();
+        }
+
+        copyOf.toFirst();
+        return copyOf;
     }
 
     /**
@@ -38,6 +47,15 @@ public class ListGraph implements Graph {
      * Sobald eine Uebereinstimmung gefunden wurde, kann die Schleife abgebrochen werden.
      */
     public Vertex getVertex(String pID) {
+        vertices.toFirst();
+        while (vertices.hasAccess()){
+            if (vertices.getContent().getID().equals(pID)){
+            return vertices.getContent();
+
+            }else {
+            vertices.next();
+        }
+        }
         return null;
     }
 
@@ -50,6 +68,21 @@ public class ListGraph implements Graph {
      */
     public void addVertex(Vertex pVertex) {
 
+        if (pVertex != null && pVertex.getID() != null){
+            vertices.toFirst();
+            boolean flag = true;
+            while (vertices.hasAccess()){
+                if (vertices.getContent().getID().equals(pVertex.getID())){
+                    flag = false;
+                }
+                vertices.next();
+
+            }
+
+            if (flag){
+                vertices.append(pVertex);
+            }
+        }
     }
 
     /**
@@ -62,6 +95,33 @@ public class ListGraph implements Graph {
      */
     public void removeVertex(Vertex pVertex) {
 
+        if (pVertex ==null){
+            return;
+        }
+
+        edges.toFirst();
+        while (edges.hasAccess()){
+
+            Edge currentEdge = edges.getContent();
+            Vertex[] vertexesOfEdge = currentEdge.getVertices();
+
+            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex){
+
+                edges.remove();
+            } else {
+                edges.next();
+            }
+        }
+
+        vertices.toFirst();
+        while (vertices.hasAccess()){
+            if (vertices.getContent() == pVertex){
+                vertices.remove();
+            } else {
+                vertices.next();
+            }
+
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -73,7 +133,18 @@ public class ListGraph implements Graph {
      * Hinweis: Analog zu getVertices(), aber fuer edges und Edge-Objekte.
      */
     public List<Edge> getEdges() {
-        return null;
+
+        List<Edge> copyOf = new List<>();
+
+        edges.toFirst();
+        while (edges.hasAccess()) {
+
+            copyOf.append(edges.getContent());
+            edges.next();
+        }
+
+        copyOf.toFirst();
+        return copyOf;
     }
 
     /**
@@ -83,8 +154,25 @@ public class ListGraph implements Graph {
      * Falls ja, haenge die Kante an die Ergebnisliste.
      */
     public List<Edge> getEdges(Vertex pVertex) {
-        return null;
+
+        List<Edge> copyOf = new List<>();
+
+        edges.toFirst();
+        while (edges.hasAccess()){
+
+            Edge currentEdge = edges.getContent();
+            Vertex[] vertexesOfEdge = currentEdge.getVertices();
+
+            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex){
+
+                    copyOf.append(edges.getContent());
+                }
+            edges.next();
+        }
+
+        return copyOf;
     }
+
 
     /**
      * Liefert die Kante zwischen pVertex und pAnotherVertex, oder null.
@@ -93,6 +181,18 @@ public class ListGraph implements Graph {
      * Da der Graph ungerichtet ist, muessen beide Richtungen geprueft werden.
      */
     public Edge getEdge(Vertex pVertex, Vertex pAnotherVertex) {
+
+        edges.toFirst();
+        while (edges.hasAccess()){
+            Vertex[] v = edges.getContent().getVertices();
+
+            if ((v[0] == pVertex && v[1] == pAnotherVertex) || (v[0] == pAnotherVertex && v[1] == pVertex)) {
+                return edges.getContent();
+            }
+            edges.next();
+
+        }
+
         return null;
     }
 
@@ -108,6 +208,20 @@ public class ListGraph implements Graph {
      */
     public void addEdge(Edge pEdge) {
 
+        if (pEdge != null) {
+
+            Vertex v1 = pEdge.getVertices()[0];
+            Vertex v2 = pEdge.getVertices()[1];
+
+            if (v1 != null && v2 != null
+                    && v1 != v2
+                    && getVertex(v1.getID()) == v1
+                    && getVertex(v2.getID()) == v2
+                    && getEdge(v1, v2) == null) {
+
+                edges.append(pEdge);
+            }
+        }
     }
 
     /**
@@ -116,6 +230,20 @@ public class ListGraph implements Graph {
      * Bei Uebereinstimmung remove() aufrufen (kein next() danach!), sonst next().
      */
     public void removeEdge(Edge pEdge) {
+
+        if (pEdge == null) {
+            return;
+        }
+
+        edges.toFirst();
+
+        while (edges.hasAccess()) {
+            if (edges.getContent() == pEdge) {
+                edges.remove(); // KEIN next(), weil remove schon weiterschiebt
+            } else {
+                edges.next();
+            }
+        }
 
     }
 
@@ -129,6 +257,12 @@ public class ListGraph implements Graph {
      */
     public void setAllVertexMarks(boolean pMark) {
 
+        vertices.toFirst();
+        while (vertices.hasAccess()){
+            vertices.getContent().setMark(pMark);
+            vertices.next();
+        }
+
     }
 
     /**
@@ -137,6 +271,12 @@ public class ListGraph implements Graph {
      */
     public void setAllEdgeMarks(boolean pMark) {
 
+
+        edges.toFirst();
+        while (edges.hasAccess()){
+            edges.getContent().setMark(pMark);
+            edges.next();
+        }
     }
 
     /**
@@ -146,7 +286,18 @@ public class ListGraph implements Graph {
      * Durchlaufe dennoch die gesamte Liste (kein vorzeitiger Abbruch noetig).
      */
     public boolean allVerticesMarked() {
-        return false;
+
+        vertices.toFirst();
+        boolean result = true;
+
+        while (vertices.hasAccess()){
+            if (!vertices.getContent().isMarked()){
+                result = false;
+            }
+
+            vertices.next();
+        }
+        return result;
     }
 
     /**
@@ -154,8 +305,20 @@ public class ListGraph implements Graph {
      * Hinweis: Analog zu allVerticesMarked(), aber fuer edges.
      */
     public boolean allEdgesMarked() {
-        return false;
+
+        edges.toFirst();
+        boolean result = true;
+
+        while (edges.hasAccess()){
+            if (!edges.getContent().isMarked()){
+                result = false;
+            }
+
+            edges.next();
+        }
+        return result;
     }
+
 
     // -------------------------------------------------------------------------
     // Nachbarn & Hilfsmethoden
@@ -167,8 +330,28 @@ public class ListGraph implements Graph {
      * an die Ergebnisliste – und umgekehrt. So wird der jeweils andere Endpunkt
      * als Nachbar erkannt.
      */
+
     public List<Vertex> getNeighbours(Vertex pVertex) {
-        return null;
+
+        List<Vertex> result = new List<>();
+        edges.toFirst();
+
+        while (edges.hasAccess()){
+
+            Vertex[] vertexPair = edges.getContent().getVertices();
+
+            if (vertexPair[0] == pVertex){
+                result.append(vertexPair[1]);
+            }
+
+            if (vertexPair[1] == pVertex){
+                result.append(vertexPair[0]);
+            }
+
+            edges.next();
+        }
+
+        return result;
     }
 
     /**
@@ -176,6 +359,8 @@ public class ListGraph implements Graph {
      * Hinweis: Delegiere direkt an vertices.isEmpty().
      */
     public boolean isEmpty() {
-        return false;
+
+        return vertices.isEmpty(); //hilfs variable? für schutz nötig?
+
     }
 }
