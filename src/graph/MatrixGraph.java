@@ -421,4 +421,3 @@ public class MatrixGraph implements Graph {
         return  vertexCount == 0;
     }
 }
-

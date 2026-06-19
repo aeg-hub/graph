@@ -136,7 +136,7 @@ public class ListGraph implements Graph {
      */
     public List<Edge> getEdges() {
 
-        List copyOf = new List<>();
+        List<Edge> copyOf = new List<>();
 
         edges.toFirst();
         while (edges.hasAccess()) {
