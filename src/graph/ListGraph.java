@@ -101,8 +101,6 @@ public class ListGraph implements Graph {
 
         edges.toFirst();
         while (edges.hasAccess()){
-            // if (edges.getContent().getVertices()[0] == pVertex || edges.getContent().getVertices()[1] == pVertex){
-            // sehr langes argument, nur definiert of 2 vertexes (vllt kommt später irgendeine komische neue verbindung, better safe than sorry)
 
             Edge currentEdge = edges.getContent();
             Vertex[] vertexesOfEdge = currentEdge.getVertices();
