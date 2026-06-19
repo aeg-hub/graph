@@ -156,7 +156,6 @@ public class ListGraph implements Graph {
     public List<Edge> getEdges(Vertex pVertex) {
 
         List<Edge> copyOf = new List<>();
-         // liste filtern mit streams? wahrscheinlich wollen sie es aber manuell
 
         edges.toFirst();
         while (edges.hasAccess()){
