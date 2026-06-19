@@ -15,7 +15,8 @@ public class ListGraph implements Graph {
      * Hinweis: Initialisiere beide Listen als neue, leere List-Objekte.
      */
     public ListGraph() {
-
+    	this.vertices = new List<Vertex>();
+    	this.edges = new List<Edge>();
     }
 
     // -------------------------------------------------------------------------
@@ -63,7 +64,18 @@ public class ListGraph implements Graph {
      * eine gleiche ID gefunden wird. Fuege pVertex nur ein, wenn das Flag noch true ist.
      */
     public void addVertex(Vertex pVertex) {
-
+    	if (pVertex.getID() != null && pVertex != null) {
+    		boolean b = true;
+    		vertices.toFirst();
+    		while(vertices.hasAccess()) {
+    			if (vertices.getContent().getID().equals(pVertex.getID())) {
+    				b = false;
+    			}
+    		if (b)	{
+    			vertices.append(pVertex);
+    		}
+    		}
+    	}
     }
 
     /**
@@ -75,7 +87,7 @@ public class ListGraph implements Graph {
      * und entferne ihn ebenfalls mit remove().
      */
     public void removeVertex(Vertex pVertex) {
-
+    	
     }
 
     // -------------------------------------------------------------------------
