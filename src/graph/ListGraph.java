@@ -101,9 +101,7 @@ public class ListGraph implements Graph {
         }
 
         edges.toFirst();
-        while (edges.hasAccess()) {
-            // if (edges.getContent().getVertices()[0] == pVertex || edges.getContent().getVertices()[1] == pVertex){
-            // sehr langes argument, nur definiert of 2 vertexes (vllt kommt später irgendeine komische neue verbindung, better safe than sorry)
+        while (edges.hasAccess()){
 
             Edge currentEdge = edges.getContent();
             Vertex[] vertexesOfEdge = currentEdge.getVertices();
@@ -159,7 +157,6 @@ public class ListGraph implements Graph {
     public List<Edge> getEdges(Vertex pVertex) {
 
         List<Edge> copyOf = new List<>();
-        // liste filtern mit streams? wahrscheinlich wollen sie es aber manuell
 
         edges.toFirst();
         while (edges.hasAccess()) {
