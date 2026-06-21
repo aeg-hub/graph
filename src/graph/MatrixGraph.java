@@ -56,11 +56,11 @@ public class MatrixGraph implements Graph {
     /**
      * Vergroessert vertices und matrix auf die doppelte Kapazitaet.
      * Hinweis:
-     * 1. Lege ein neues Vertex-Array der doppelten Laenge an.
-     * 2. Kopiere vertices per System.arraycopy hinein.
-     * 3. Lege eine neue Edge-Matrix der doppelten Groesse an.
-     * 4. Kopiere jede Zeile 0..vertexCount-1 per System.arraycopy in die neue Matrix.
-     * Die neuen Zeilen und Spalten bleiben null (keine Kante).
+     *   1. Lege ein neues Vertex-Array der doppelten Laenge an.
+     *   2. Kopiere vertices per System.arraycopy hinein.
+     *   3. Lege eine neue Edge-Matrix der doppelten Groesse an.
+     *   4. Kopiere jede Zeile 0..vertexCount-1 per System.arraycopy in die neue Matrix.
+     *      Die neuen Zeilen und Spalten bleiben null (keine Kante).
      * 5. Ersetze vertices und matrix durch die neuen Arrays.
      */
     private void grow() {
@@ -115,11 +115,11 @@ public class MatrixGraph implements Graph {
     /**
      * Fuegt pVertex in den Graphen ein.
      * Hinweis:
-     * 1. Pruefe: pVertex != null und pVertex.getID() != null.
-     * 2. Pruefe per getVertex(), dass die ID noch nicht vergeben ist (Ergebnis == null).
-     * 3. Falls vertices voll ist (vertexCount == vertices.length), rufe grow() auf.
-     * 4. Speichere pVertex an vertices[vertexCount] und erhoehe vertexCount um 1.
-     * Die neue Zeile/Spalte in matrix ist bereits null – keine weitere Aktion noetig.
+     *   1. Pruefe: pVertex != null und pVertex.getID() != null.
+     *   2. Pruefe per getVertex(), dass die ID noch nicht vergeben ist (Ergebnis == null).
+     *   3. Falls vertices voll ist (vertexCount == vertices.length), rufe grow() auf.
+     *   4. Speichere pVertex an vertices[vertexCount] und erhoehe vertexCount um 1.
+     *      Die neue Zeile/Spalte in matrix ist bereits null – keine weitere Aktion noetig.
      */
     public void addVertex(Vertex pVertex) {
 
@@ -136,10 +136,10 @@ public class MatrixGraph implements Graph {
     /**
      * Entfernt pVertex aus dem Graphen und loescht alle seine Kanten.
      * Hinweis:
-     * 1. Bestimme den Index i von pVertex per indexOf(). Ist er -1, nichts tun.
-     * 2. Loesche die Kanten: Setze matrix[i][j] und matrix[j][i] fuer alle j auf null.
-     * 3. Um die Luecke in vertices zu schliessen: Kopiere vertices[vertexCount-1]
-     * an Stelle i, setze vertices[vertexCount-1] = null, verringere vertexCount.
+     *   1. Bestimme den Index i von pVertex per indexOf(). Ist er -1, nichts tun.
+     *   2. Loesche die Kanten: Setze matrix[i][j] und matrix[j][i] fuer alle j auf null.
+     *   3. Um die Luecke in vertices zu schliessen: Kopiere vertices[vertexCount-1]
+     *      an Stelle i, setze vertices[vertexCount-1] = null, verringere vertexCount.
      * 4. Verschiebe auch die Matrix: Kopiere Zeile und Spalte (vertexCount)
      * an die Stelle i (tausche also den letzten Knoten an die Luecke).
      * Setze danach die letzte Zeile und Spalte komplett auf null.

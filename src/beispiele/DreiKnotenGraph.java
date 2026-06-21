@@ -8,11 +8,11 @@ import graph.Vertex;
 /**
  * Erstellt einen vollstaendigen Graphen K3 mit drei Knoten und drei Kanten.
  * <p>
- * A ---5--- B
- * \       /
- * 3     7
- * \   /
- * C
+ *   A ---5--- B
+ *    \       /
+ *     3     7
+ *      \   /
+ *        C
  */
 public class DreiKnotenGraph {
 
