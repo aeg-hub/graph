@@ -2,7 +2,7 @@ package graph;
 
 /**
  * Klasse Edge
- *
+ * <p>
  * Stellt eine einzelne, ungerichtete Kante eines Graphen dar.
  * Eine Kante verbindet genau zwei Knoten und hat eine Gewichtung sowie eine Markierung.
  */

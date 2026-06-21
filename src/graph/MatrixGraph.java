@@ -2,14 +2,14 @@ package graph;
 
 /**
  * Klasse MatrixGraph
- *
+ * <p>
  * Implementierung des Interfaces Graph mithilfe einer Adjazenzmatrix.
  * Knoten werden in einem Vertex-Array verwaltet. Der Index eines Knotens
  * in diesem Array entspricht seinem Zeilen- und Spaltenindex in der Matrix.
- *
+ * <p>
  * Die Matrix speichert Edge-Objekte. Ein Eintrag null bedeutet: keine Kante vorhanden.
  * Da der Graph ungerichtet ist, gilt stets: matrix[i][j] == matrix[j][i].
- *
+ * <p>
  * Beide Arrays starten mit der Kapazitaet START_CAPACITY und werden
  * bei Bedarf automatisch verdoppelt.
  */
@@ -61,16 +61,16 @@ public class MatrixGraph implements Graph {
      *   3. Lege eine neue Edge-Matrix der doppelten Groesse an.
      *   4. Kopiere jede Zeile 0..vertexCount-1 per System.arraycopy in die neue Matrix.
      *      Die neuen Zeilen und Spalten bleiben null (keine Kante).
-     *   5. Ersetze vertices und matrix durch die neuen Arrays.
+     * 5. Ersetze vertices und matrix durch die neuen Arrays.
      */
     private void grow() {
 
-        Vertex[] growDouble = new Vertex[vertices.length*2];
+        Vertex[] growDouble = new Vertex[vertices.length * 2];
         System.arraycopy(vertices, 0, growDouble, 0, vertices.length);
 
         int rows = matrix.length;
         int cols = matrix[0].length;
-        Edge[][] growDoubleEdge = new Edge[rows*2][cols]; // nur die rows verdoppeln?
+        Edge[][] growDoubleEdge = new Edge[rows * 2][cols]; // nur die rows verdoppeln?
 
         System.arraycopy(matrix, 0, growDoubleEdge, 0, rows);
 
@@ -123,8 +123,8 @@ public class MatrixGraph implements Graph {
      */
     public void addVertex(Vertex pVertex) {
 
-        if (pVertex != null && pVertex.getID() != null && getVertex(pVertex.getID()) == null){
-            if (vertices.length == vertexCount){
+        if (pVertex != null && pVertex.getID() != null && getVertex(pVertex.getID()) == null) {
+            if (vertices.length == vertexCount) {
                 grow();
             }
 
@@ -140,9 +140,9 @@ public class MatrixGraph implements Graph {
      *   2. Loesche die Kanten: Setze matrix[i][j] und matrix[j][i] fuer alle j auf null.
      *   3. Um die Luecke in vertices zu schliessen: Kopiere vertices[vertexCount-1]
      *      an Stelle i, setze vertices[vertexCount-1] = null, verringere vertexCount.
-     *   4. Verschiebe auch die Matrix: Kopiere Zeile und Spalte (vertexCount)
-     *      an die Stelle i (tausche also den letzten Knoten an die Luecke).
-     *      Setze danach die letzte Zeile und Spalte komplett auf null.
+     * 4. Verschiebe auch die Matrix: Kopiere Zeile und Spalte (vertexCount)
+     * an die Stelle i (tausche also den letzten Knoten an die Luecke).
+     * Setze danach die letzte Zeile und Spalte komplett auf null.
      */
     public void removeVertex(Vertex pVertex) {
 
@@ -398,6 +398,6 @@ public class MatrixGraph implements Graph {
      * Hinweis: Pruefe ob vertexCount == 0.
      */
     public boolean isEmpty() {
-        return  vertexCount == 0;
+        return vertexCount == 0;
     }
 }

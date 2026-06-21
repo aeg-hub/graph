@@ -2,7 +2,7 @@ package graph;
 
 /**
  * Klasse Vertex
- *
+ * <p>
  * Stellt einen einzelnen Knoten eines Graphen dar.
  * Jeder Knoten hat eine eindeutige ID und eine Markierung.
  */

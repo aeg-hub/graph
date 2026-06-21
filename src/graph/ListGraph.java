@@ -1,7 +1,8 @@
 package graph;
+
 /**
  * Klasse ListGraph
- *
+ * <p>
  * Implementierung des Interfaces Graph mithilfe von Adjazenzlisten.
  * Knoten und Kanten werden jeweils in einer verketteten Liste gespeichert.
  */
@@ -32,7 +33,7 @@ public class ListGraph implements Graph {
     public List<Vertex> getVertices() {
         vertices.toFirst();
         List<Vertex> copyOf = new List<>();
-        while(vertices.hasAccess()){
+        while (vertices.hasAccess()) {
             copyOf.append(vertices.getContent());
             vertices.next();
         }
@@ -48,13 +49,13 @@ public class ListGraph implements Graph {
      */
     public Vertex getVertex(String pID) {
         vertices.toFirst();
-        while (vertices.hasAccess()){
-            if (vertices.getContent().getID().equals(pID)){
-            return vertices.getContent();
+        while (vertices.hasAccess()) {
+            if (vertices.getContent().getID().equals(pID)) {
+                return vertices.getContent();
 
-            }else {
-            vertices.next();
-        }
+            } else {
+                vertices.next();
+            }
         }
         return null;
     }
@@ -68,18 +69,18 @@ public class ListGraph implements Graph {
      */
     public void addVertex(Vertex pVertex) {
 
-        if (pVertex != null && pVertex.getID() != null){
+        if (pVertex != null && pVertex.getID() != null) {
             vertices.toFirst();
             boolean flag = true;
-            while (vertices.hasAccess()){
-                if (vertices.getContent().getID().equals(pVertex.getID())){
+            while (vertices.hasAccess()) {
+                if (vertices.getContent().getID().equals(pVertex.getID())) {
                     flag = false;
                 }
                 vertices.next();
 
             }
 
-            if (flag){
+            if (flag) {
                 vertices.append(pVertex);
             }
         }
@@ -95,7 +96,7 @@ public class ListGraph implements Graph {
      */
     public void removeVertex(Vertex pVertex) {
 
-        if (pVertex ==null){
+        if (pVertex == null) {
             return;
         }
 
@@ -105,7 +106,7 @@ public class ListGraph implements Graph {
             Edge currentEdge = edges.getContent();
             Vertex[] vertexesOfEdge = currentEdge.getVertices();
 
-            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex){
+            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex) {
 
                 edges.remove();
             } else {
@@ -114,8 +115,8 @@ public class ListGraph implements Graph {
         }
 
         vertices.toFirst();
-        while (vertices.hasAccess()){
-            if (vertices.getContent() == pVertex){
+        while (vertices.hasAccess()) {
+            if (vertices.getContent() == pVertex) {
                 vertices.remove();
             } else {
                 vertices.next();
@@ -158,15 +159,15 @@ public class ListGraph implements Graph {
         List<Edge> copyOf = new List<>();
 
         edges.toFirst();
-        while (edges.hasAccess()){
+        while (edges.hasAccess()) {
 
             Edge currentEdge = edges.getContent();
             Vertex[] vertexesOfEdge = currentEdge.getVertices();
 
-            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex){
+            if (vertexesOfEdge[0] == pVertex || vertexesOfEdge[1] == pVertex) {
 
-                    copyOf.append(edges.getContent());
-                }
+                copyOf.append(edges.getContent());
+            }
             edges.next();
         }
 
@@ -183,7 +184,7 @@ public class ListGraph implements Graph {
     public Edge getEdge(Vertex pVertex, Vertex pAnotherVertex) {
 
         edges.toFirst();
-        while (edges.hasAccess()){
+        while (edges.hasAccess()) {
             Vertex[] v = edges.getContent().getVertices();
 
             if ((v[0] == pVertex && v[1] == pAnotherVertex) || (v[0] == pAnotherVertex && v[1] == pVertex)) {
@@ -199,11 +200,11 @@ public class ListGraph implements Graph {
     /**
      * Fuegt pEdge in den Graphen ein.
      * Hinweis: Pruefe folgende Bedingungen (alle muessen erfuellt sein):
-     *   1. pEdge != null
-     *   2. Beide Endknoten sind nicht null
-     *   3. Beide Endknoten sind mit getVertex() im Graphen auffindbar (Referenzvergleich ==)
-     *   4. Es existiert noch keine Kante zwischen den beiden Knoten (getEdge() == null)
-     *   5. Die beiden Endknoten sind nicht identisch (!=)
+     * 1. pEdge != null
+     * 2. Beide Endknoten sind nicht null
+     * 3. Beide Endknoten sind mit getVertex() im Graphen auffindbar (Referenzvergleich ==)
+     * 4. Es existiert noch keine Kante zwischen den beiden Knoten (getEdge() == null)
+     * 5. Die beiden Endknoten sind nicht identisch (!=)
      * Nur wenn alle Bedingungen erfuellt sind, edge per append() einfuegen.
      */
     public void addEdge(Edge pEdge) {
@@ -258,7 +259,7 @@ public class ListGraph implements Graph {
     public void setAllVertexMarks(boolean pMark) {
 
         vertices.toFirst();
-        while (vertices.hasAccess()){
+        while (vertices.hasAccess()) {
             vertices.getContent().setMark(pMark);
             vertices.next();
         }
@@ -273,7 +274,7 @@ public class ListGraph implements Graph {
 
 
         edges.toFirst();
-        while (edges.hasAccess()){
+        while (edges.hasAccess()) {
             edges.getContent().setMark(pMark);
             edges.next();
         }
@@ -290,8 +291,8 @@ public class ListGraph implements Graph {
         vertices.toFirst();
         boolean result = true;
 
-        while (vertices.hasAccess()){
-            if (!vertices.getContent().isMarked()){
+        while (vertices.hasAccess()) {
+            if (!vertices.getContent().isMarked()) {
                 result = false;
             }
 
@@ -309,8 +310,8 @@ public class ListGraph implements Graph {
         edges.toFirst();
         boolean result = true;
 
-        while (edges.hasAccess()){
-            if (!edges.getContent().isMarked()){
+        while (edges.hasAccess()) {
+            if (!edges.getContent().isMarked()) {
                 result = false;
             }
 
@@ -336,15 +337,15 @@ public class ListGraph implements Graph {
         List<Vertex> result = new List<>();
         edges.toFirst();
 
-        while (edges.hasAccess()){
+        while (edges.hasAccess()) {
 
             Vertex[] vertexPair = edges.getContent().getVertices();
 
-            if (vertexPair[0] == pVertex){
+            if (vertexPair[0] == pVertex) {
                 result.append(vertexPair[1]);
             }
 
-            if (vertexPair[1] == pVertex){
+            if (vertexPair[1] == pVertex) {
                 result.append(vertexPair[0]);
             }
 
