@@ -17,6 +17,24 @@ public class FreundschaftsgraphS216 {
         // Graph erstellen
     	FreundschaftsgraphS216 f = new FreundschaftsgraphS216();
     	Graph g = f.freundschaftsgraphErstellen();
+        // Ausgabe zur Kontrolle
+        System.out.println("Knoten im Graphen:");
+        List<Vertex> vertices = g.getVertices();
+        vertices.toFirst();
+        while (vertices.hasAccess()) {
+            System.out.println("  " + vertices.getContent().getID());
+            vertices.next();
+        }
+
+        System.out.println("\nKanten im Graphen:");
+        List<Edge> edges = g.getEdges();
+        edges.toFirst();
+        while (edges.hasAccess()) {
+            Edge e = edges.getContent();
+            Vertex[] ends = e.getVertices();
+            System.out.println("  " + ends[0].getID() + " --" + e.getWeight() + "-- " + ends[1].getID());
+            edges.next();
+        }
     }
     
     public ListGraph freundschaftsgraphErstellen() {
@@ -68,24 +86,7 @@ public class FreundschaftsgraphS216 {
         g.addEdge(merlesusi);
 
 
-        // Ausgabe zur Kontrolle
-        System.out.println("Knoten im Graphen:");
-        List<Vertex> vertices = g.getVertices();
-        vertices.toFirst();
-        while (vertices.hasAccess()) {
-            System.out.println("  " + vertices.getContent().getID());
-            vertices.next();
-        }
 
-        System.out.println("\nKanten im Graphen:");
-        List<Edge> edges = g.getEdges();
-        edges.toFirst();
-        while (edges.hasAccess()) {
-            Edge e = edges.getContent();
-            Vertex[] ends = e.getVertices();
-            System.out.println("  " + ends[0].getID() + " --" + e.getWeight() + "-- " + ends[1].getID());
-            edges.next();
-        }
         return g;
     }
 
