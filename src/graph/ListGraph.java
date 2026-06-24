@@ -10,6 +10,7 @@ public class ListGraph implements Graph {
 
     private List<Vertex> vertices;
     private List<Edge> edges;
+    private boolean verbose = false;
 
     /**
      * Erstellt einen leeren Graphen.
@@ -18,6 +19,11 @@ public class ListGraph implements Graph {
     public ListGraph() {
         vertices = new List<>();
         edges = new List<>();
+        verbose = false;
+    }
+    
+    public void setVerbose(boolean pVerbose) {
+    	verbose = pVerbose;
     }
 
     // -------------------------------------------------------------------------
@@ -221,6 +227,8 @@ public class ListGraph implements Graph {
                     && getEdge(v1, v2) == null) {
 
                 edges.append(pEdge);
+            } else if (verbose && getEdge(v1, v2) != null) {
+            	System.err.println("Kante existiert schon: "+pEdge);
             }
         }
     }

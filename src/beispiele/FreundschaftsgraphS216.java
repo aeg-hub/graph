@@ -17,7 +17,7 @@ public class FreundschaftsgraphS216 {
         // Graph erstellen
     	FreundschaftsgraphS216 f = new FreundschaftsgraphS216();
     	Graph g = f.freundschaftsgraphErstellen();
-        // Ausgabe zur Kontrolle
+    	// Ausgabe zur Kontrolle
         System.out.println("Knoten im Graphen:");
         List<Vertex> vertices = g.getVertices();
         vertices.toFirst();
@@ -40,6 +40,7 @@ public class FreundschaftsgraphS216 {
     public ListGraph freundschaftsgraphErstellen() {
     	
     	ListGraph g = new ListGraph();
+    	((ListGraph)g).setVerbose(true);
         
         // Knoten anlegen und einfuegen
         Vertex susi = new Vertex("Susi");
@@ -69,7 +70,7 @@ public class FreundschaftsgraphS216 {
         Edge merlekarl = new Edge(merle, karl, 1);
         Edge merlelisa = new Edge(merle, lisa, 1);
         Edge merlesusi = new Edge(merle, susi, 1);
-
+        
         g.addEdge(susikarl);
         g.addEdge(susilisa);
         g.addEdge(susimerle);
@@ -84,8 +85,6 @@ public class FreundschaftsgraphS216 {
         g.addEdge(merlekarl);
         g.addEdge(merlelisa);
         g.addEdge(merlesusi);
-
-
 
         return g;
     }
