@@ -32,8 +32,7 @@ public class FreundschaftsGraph {
         Edge KS = new Edge(Karl, Susi, 1);
         Edge KJ = new Edge(Karl, Jens, 1);
         Edge LM = new Edge(Lisa, Merle, 1);
-        
-        
+               
 
         g.addEdge(SK);
         g.addEdge(SL);
