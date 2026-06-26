@@ -37,6 +37,24 @@ public class FreundschaftsgraphS216 {
         }
     }
     
+    public boolean istInCliqueVon(ListGraph g, Vertex wer, Vertex von) {
+    	//return istEdgeEnthalten(g.getEdges(), wer, von);
+    	List<Vertex> nachbarn = g.getNeighbours(von);
+    	nachbarn.toFirst();
+    	while (nachbarn.hasAccess()) {
+    		Vertex v = nachbarn.getContent();
+    		if (v.equals(wer)) {
+    			return true;
+    		}
+    		nachbarn.next();
+    	}
+    	return false;
+    }
+    
+    public boolean istEdgeEnthalten(List<Edge> l, Vertex v1, Vertex v2) {
+    	return false;
+    }
+    
     public ListGraph freundschaftsgraphErstellen() {
     	
     	ListGraph g = new ListGraph();
