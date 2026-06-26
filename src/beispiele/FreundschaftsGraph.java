@@ -42,6 +42,8 @@ public class FreundschaftsGraph {
         g.addEdge(KJ);
         g.addEdge(LM);
         
+        
+        
         System.out.println("Knoten im Graphen:");
         List<Vertex> vertices = g.getVertices();
         vertices.toFirst();
@@ -59,6 +61,23 @@ public class FreundschaftsGraph {
             System.out.println("  " + ends[0].getID() + " --" + e.getWeight() + "-- " + ends[1].getID());
             edges.next();
         }
+        
+  
 	}
+	
+	private static boolean isInClique(String von, String wer, List<Edge> edges) {
+		
+		edges.toFirst();
+		while (edges.hasAccess()) {
+			if (edges.getContent().getVertices()[0].getID().equals(von) && edges.getContent().getVertices()[1].getID().equals(wer) || 
+					edges.getContent().getVertices()[1].getID().equals(wer) && edges.getContent().getVertices()[0].getID().equals(von) ) {
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
+
 	
 }
