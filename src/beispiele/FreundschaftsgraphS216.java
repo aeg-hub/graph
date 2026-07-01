@@ -72,4 +72,34 @@ public class FreundschaftsgraphS216 {
 		}
 	}
 
+	public static boolean inCliqueVon(ListGraph g, Vertex wer, Vertex von) {
+
+		List<Vertex> nachbarn = g.getNeighbours(von);
+		nachbarn.toFirst();
+		while (nachbarn.hasAccess()) {
+			Vertex l = nachbarn.getContent();
+			
+		}
+		return false;
+	}
+
+	public int grad(ListGraph k, Vertex v) {
+
+		int grad = 0;
+
+		List<Vertex> nachbarn = k.getNeighbours(v);
+
+		nachbarn.toFirst();
+		while (nachbarn.hasAccess()) {
+			grad++;
+			nachbarn.next();
+		}
+		return grad;
+	}
+
+	public int minimalerKnotenGrad() {
+		int minimum = Integer.MAX_VALUE;
+		
+		return minimum;
+	}
 }
