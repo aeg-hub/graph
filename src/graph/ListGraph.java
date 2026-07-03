@@ -30,6 +30,21 @@ public class ListGraph implements Graph {
      * toFirst()/hasAccess()/next() und haenge jeden Knoten per append() an.
      * Setze den Zeiger der Ergebnisliste am Ende mit toFirst() auf den Anfang.
      */
+    
+    public int getGrad(Vertex v) {
+    	List<Edge> a = this.getEdges();
+    	a.toFirst();
+    	int count = 0;
+    	while(a.hasAccess()) {
+    		for(int i = 0;i < a.getContent().getVertices().length;i++) {
+    			if(a.getContent().getVertices()[0] == v || a.getContent().getVertices()[1] == v) {
+    				count++;
+    			}
+    		}
+    		a.next();
+    	}
+    	return count;
+    }
     public List<Vertex> getVertices() {
         vertices.toFirst();
         List<Vertex> copyOf = new List<>();
@@ -300,7 +315,8 @@ public class ListGraph implements Graph {
         }
         return result;
     }
-
+    
+    
     /**
      * Liefert true, wenn alle Kanten mit true markiert sind, sonst false.
      * Hinweis: Analog zu allVerticesMarked(), aber fuer edges.
