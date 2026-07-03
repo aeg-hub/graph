@@ -23,14 +23,14 @@ public class GraphFactory2 {
 
 	private static final double[][] ADJACENCY_WEIGHTS = {
 			// A    B    C    D    E    F    G    H
-			{ 0.0, 2.0, 3.0, 0.0, 0.0, 0.0, 7.0, 0.0}, // A
-			{ 2.0, 0.0, 0.0, 1.0, 0.0, 5.0, 4.0, 1.0}, // B
-			{ 3.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0}, // C
-			{ 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0}, // D
-			{ 0.0, 0.0, 3.0, 0.0, 0.0, 1.0, 1.0, 0.0}, // E
-			{ 0.0, 5.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0}, // F
-			{ 7.0, 4.0, 0.0, 0.0, 1.0, 0.0, 0.0, 2.0}, // G
-			{ 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0}, // H
+			{ 0.0, 2.0, 3.0, 0.0, 0.0, 0.0, 7.0, 0.0 }, // A
+			{ 2.0, 0.0, 0.0, 1.0, 0.0, 5.0, 4.0, 1.0 }, // B
+			{ 3.0, 0.0, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0 }, // C
+			{ 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0 }, // D
+			{ 0.0, 0.0, 3.0, 0.0, 0.0, 1.0, 1.0, 0.0 }, // E
+			{ 0.0, 5.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0 }, // F
+			{ 7.0, 4.0, 0.0, 0.0, 1.0, 0.0, 0.0, 2.0 }, // G
+			{ 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 2.0, 0.0 }, // H
 
 	};
 
@@ -95,7 +95,38 @@ public class GraphFactory2 {
 	public static void dijkstra(ListGraph graph, Vertex start) {
 		HashMap<Vertex, Double> entfernung = new HashMap<Vertex, Double>();
 		HashMap<Vertex, Vertex> vorgaenger = new HashMap<Vertex, Vertex>();
-		
-		graph.getVertices();
+
+		List<Vertex> unbesucht = graph.getVertices();
+
+		unbesucht.toFirst();
+		while (unbesucht.hasAccess()) {
+			if (unbesucht.getContent() != start) {
+				entfernung.put(unbesucht.getContent(), Double.POSITIVE_INFINITY);
+			} else {
+				entfernung.put(start, 0.0);
+			}
+			vorgaenger.put(unbesucht.getContent(), null);
+			unbesucht.next();
+		}
+
+		unbesucht.toFirst();
+		Vertex kleinsterKnoten = unbesucht.getContent();
+
+		unbesucht.next();
+		while (unbesucht.hasAccess()) {
+			if (entfernung.get(unbesucht.getContent()) < entfernung.get(kleinsterKnoten)) {
+				kleinsterKnoten = unbesucht.getContent();
+			}
+			unbesucht.next();
+		}
+
+		unbesucht.toFirst();
+		while (unbesucht.hasAccess()) {
+			if (unbesucht.getContent() == kleinsterKnoten) {
+				unbesucht.remove();
+				break;
+			}
+			unbesucht.next();
+		}
 	}
 }
