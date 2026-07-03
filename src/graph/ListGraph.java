@@ -354,6 +354,17 @@ public class ListGraph implements Graph {
 
         return result;
     }
+    
+    public int getGrad(Vertex pVertex) {
+    	int counter = 0;
+    	List<Vertex> neighbours = getNeighbours(pVertex);
+    	neighbours.toFirst();
+    	while(neighbours.hasAccess()) {
+    		counter++;
+    		neighbours.next();
+    	}
+    	return counter;
+    }
 
     /**
      * Liefert true, wenn der Graph keine Knoten enthaelt.
