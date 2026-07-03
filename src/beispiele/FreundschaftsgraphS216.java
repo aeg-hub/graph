@@ -76,14 +76,30 @@ public class FreundschaftsgraphS216 {
 
 		List<Vertex> nachbarn = g.getNeighbours(von);
 		nachbarn.toFirst();
+
 		while (nachbarn.hasAccess()) {
-			Vertex l = nachbarn.getContent();
-			
+
+			Vertex l1 = nachbarn.getContent();
+
+			List<Vertex> nachbarn2 = g.getNeighbours(von);
+			nachbarn2.toFirst();
+			while (nachbarn2.hasAccess()) {
+				Vertex l2 = nachbarn2.getContent();
+
+				if (l1 != l2) {
+					if (g.getEdge(l1, l2) == null) {
+						return false;
+					}
+				}
+				nachbarn2.next();
+			}
+			nachbarn.next();
 		}
+
 		return false;
 	}
 
-	public int grad(ListGraph k, Vertex v) {
+	public int getGrad(ListGraph k, Vertex v) {
 
 		int grad = 0;
 
@@ -97,9 +113,25 @@ public class FreundschaftsgraphS216 {
 		return grad;
 	}
 
-	public int minimalerKnotenGrad() {
+	public int minimalerKnotenGrad(ListGraph k) {
+
+		List<Vertex> knoten = k.getVertices();
 		int minimum = Integer.MAX_VALUE;
-		
+
+		knoten.toFirst();
+
+		while (knoten.hasAccess()) {
+			Vertex v = knoten.getContent();
+			int grad = getGrad(k, v);
+
+			if (grad < minimum) {
+				minimum = grad;
+			}
+
+			knoten.next();
+
+		}
+
 		return minimum;
 	}
 }
