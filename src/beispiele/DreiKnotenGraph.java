@@ -40,6 +40,7 @@ public class DreiKnotenGraph {
         g.addEdge(bc);
 
         // Ausgabe zur Kontrolle
+        System.out.println();
         System.out.println("Knoten im Graphen:");
         List<Vertex> vertices = g.getVertices();
         vertices.toFirst();

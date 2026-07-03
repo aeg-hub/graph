@@ -1,8 +1,11 @@
-package graph;
+package beispiele;
+
+import graph.*;
 
 public class vier_c {
-	public void erzeugen() {
-		ListGraph FG= new ListGraph();
+	static ListGraph FG= new ListGraph();
+	public static void erzeugen() {
+		//ListGraph FG= new ListGraph();
 		Vertex susi = new Vertex("Susi");
 		Vertex karl = new Vertex("Karl");
 		Vertex lisa = new Vertex("Lisa");
@@ -25,9 +28,29 @@ public class vier_c {
 		FG.addEdge(kaje);
 		FG.addEdge(lime);
 		
+		int a = getGradNode(karl);
+		System.out.println(a);
+		
 	}
 	public boolean gehoreZuClique(Vertex a,Vertex b) {
 		
 		return true;
+	}
+	
+	public static int getGradNode(Vertex a) {
+		
+		List<Vertex> liste = FG.getNeighbours(a);
+		liste.toFirst();
+		System.out.println(liste.getContent());
+		int counter = 0;
+		while(liste.hasAccess()) {
+			counter++;
+			liste.next();
+		}
+		return counter;
+	}
+	public static void main(String [] args) {
+		erzeugen();
+		
 	}
 }
