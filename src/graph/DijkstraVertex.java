@@ -1,7 +1,7 @@
 package graph;
 
 public class DijkstraVertex extends Vertex {
-	
+	// test push
 	private DijkstraVertex vorgaenger;
 	private double distanz;
 
