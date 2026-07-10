@@ -5,9 +5,9 @@ import graph.*;
 /**
  * Beispielklasse GraphFactory
  *
- * Demonstriert, wie ein ListGraph aus einer Adjazenzmatrix erzeugt werden kann.
+ * Demonstriert, wie ein ListGraphPlus aus einer Adjazenzmatrix erzeugt werden kann.
  * Der Graph wird durch zwei Konstanten beschrieben:
- *   - VERTEX_NAMES:      Namen der Knoten
+ *   - VertexPlus_NAMES:      Namen der Knoten
  *   - ADJACENCY_WEIGHTS: Gewichte der Kanten als symmetrische Matrix
  *                        (0.0 = keine Kante)
  *
@@ -21,7 +21,15 @@ import graph.*;
  */
 public class GraphFactory {
 
-    private static final String[] VERTEX_NAMES = {
+    public static String[] getVertexplusNames() {
+		return VertexPlus_NAMES;
+	}
+
+	public static double[][] getAdjacencyWeights() {
+		return ADJACENCY_WEIGHTS;
+	}
+
+	private static final String[] VertexPlus_NAMES = {
         "A", "B", "C", "D"
     };
 
@@ -34,22 +42,22 @@ public class GraphFactory {
     };
 
     /**
-     * Erzeugt einen ListGraph aus den uebergebenen Knotennamen und einer Adjazenzmatrix.
+     * Erzeugt einen ListGraphPlus aus den uebergebenen Knotennamen und einer Adjazenzmatrix.
      * Eintraege mit dem Gewicht 0.0 werden als "keine Kante" interpretiert.
      * Da der Graph ungerichtet ist, wird jede Kante nur einmal eingefuegt
      * (obere Dreiecksmatrix).
      *
      * @param pNames   Array der Knotennamen
      * @param pWeights Symmetrische Adjazenzmatrix mit Kantengewichten (0.0 = keine Kante)
-     * @return         Der fertig aufgebaute ListGraph
+     * @return         Der fertig aufgebaute ListGraphPlus
      */
-    public static ListGraph generateListGraph(String[] pNames, double[][] pWeights) {
-        ListGraph graph = new ListGraph();
+    public static ListGraphPlus generateListGraph(String[] pNames, double[][] pWeights) {
+        ListGraphPlus graph = new ListGraphPlus();
 
         // Knoten anlegen und einfuegen
-        Vertex[] vertices = new Vertex[pNames.length];
+        VertexPlus[] vertices = new VertexPlus[pNames.length];
         for (int i = 0; i < pNames.length; i++) {
-            vertices[i] = new Vertex(pNames[i]);
+            vertices[i] = new VertexPlus(pNames[i], null);
             graph.addVertex(vertices[i]);
         }
 
@@ -67,7 +75,7 @@ public class GraphFactory {
     }
 
     public static void main(String[] args) {
-        ListGraph graph = generateListGraph(VERTEX_NAMES, ADJACENCY_WEIGHTS);
+        ListGraphPlus graph = generateListGraph(VertexPlus_NAMES, ADJACENCY_WEIGHTS);
 
         // Knoten ausgeben
         System.out.println("Knoten im Graphen:");
