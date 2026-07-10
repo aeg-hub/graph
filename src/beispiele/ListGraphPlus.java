@@ -48,21 +48,21 @@ public class ListGraphPlus extends ListGraph{
 	    }
 	}
 	
-	public List<VertexPlus> visit (VertexPlus visit, List<VertexPlus> toVisit) {
-		List<Edge> edges = getEdges(visit);
-		edges.toFirst();
-		while (edges.hasAccess()) {
-
-		}
-	}
-	
-	public List<VertexPlus> shortestPath(VertexPlus from, VertexPlus to){
-		List<VertexPlus> toVisit = new List<VertexPlus>();
-		toVisit.append(from);
-		
-		
-		
-		
+//	public List<VertexPlus> visit (VertexPlus visit, List<VertexPlus> toVisit) {
+//		List<Edge> edges = getEdges(visit);
+//		edges.toFirst();
+//		while (edges.hasAccess()) {
+//
+//		}
+//	}
+//
+//	public List<VertexPlus> shortestPath(VertexPlus from, VertexPlus to){
+//		List<VertexPlus> toVisit = new List<VertexPlus>();
+//		toVisit.append(from);
+//
+//
+//
+//
 //		List<Vertex> neighbors = getNeighbours(start);
 //		neighbors.toFirst();
 //		
@@ -75,7 +75,5 @@ public class ListGraphPlus extends ListGraph{
 //		}
 	}
 	
-	public static void main(String[] args) {
-		
-	}
-}
+
+

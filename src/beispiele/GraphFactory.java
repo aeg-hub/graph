@@ -97,4 +97,8 @@ public class GraphFactory {
             edges.next();
         }
     }
+
+    public static void addEdge(ListGraph pListGraph, String vertex1, String vertex2){
+        pListGraph.addEdge(new Edge(pListGraph.getVertex(vertex1), pListGraph.getVertex(vertex2), 1));
+    }
 }
