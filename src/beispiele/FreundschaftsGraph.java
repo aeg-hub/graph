@@ -1,6 +1,7 @@
 package beispiele;
 
 import algorithm.Dijkstra;
+import algorithm.Dijkstra2;
 import graph.Edge;
 import graph.List;
 import graph.ListGraph;
@@ -75,7 +76,7 @@ public class FreundschaftsGraph {
         
         System.out.println(isInClique2(Lisa, Jens, g) ? "true" : "false");
         
-        Dijkstra dj = new Dijkstra();
+        Dijkstra2 dj = new Dijkstra2();
         dj.dijkstra(g, Merle);
         
         if (isInClique("Lisa", "Jens", g.getEdges())) {

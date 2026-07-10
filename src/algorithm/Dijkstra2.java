@@ -14,7 +14,7 @@ public class Dijkstra2 {
 	public Dijkstra2() {
 	}
 
-	private static class Information {
+	private class Information {
 
 		Vertex previous;
 		double distance;
