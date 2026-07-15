@@ -25,6 +25,25 @@ public class tiefensuche {
 
     }
 
+    public static void tiefenSucheRek2(ListGraph graph, String start, int tiefe){
+        Vertex v = graph.getVertex(start);
+        for (int i = 0; i < tiefe; i++) {
+            System.out.print("  ");
+        }
+        System.out.println("Besuche: " + v.getID());
+        v.setMark(true);
+        List<Vertex> nList = graph.getNeighbours(v);
+        nList.toFirst();
+        while (nList.hasAccess()){
+            if (!nList.getContent().isMarked()){
+                tiefenSucheRek2(graph, nList.getContent().getID(), tiefe+1);
+            }
+            nList.next();
+        }
+
+    }
+
+
     public static void main(String[] args) {
         ListGraph graph = new ListGraph();
         for (int i = 0; i < 8; i++){
@@ -34,7 +53,7 @@ public class tiefensuche {
         GraphFactory.addEdge(graph,"5", "4");
         GraphFactory.addEdge(graph,"5", "1");
         GraphFactory.addEdge(graph,"1", "4");
-        GraphFactory.addEdge(graph,"1", "6");
+        //GraphFactory.addEdge(graph,"1", "6");
         GraphFactory.addEdge(graph,"6", "3");
         GraphFactory.addEdge(graph,"6", "2");
         GraphFactory.addEdge(graph,"3", "4");
@@ -43,7 +62,7 @@ public class tiefensuche {
         GraphFactory.addEdge(graph,"2", "7");
         GraphFactory.addEdge(graph,"7", "4");
 
-        tiefenSucheRek(graph, "1", "2");
+        tiefenSucheRek2(graph, "4", 0);
     }
 }
 
